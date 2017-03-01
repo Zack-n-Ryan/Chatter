@@ -32,7 +32,23 @@ namespace Chatter.Controllers
             {
                 return HttpNotFound();
             }
-            return View(chatFeed);
+
+            string identa = User.Identity.Name;
+
+            var viewModel = new ChatViewModel
+            {
+                
+
+                ChatFeed = chatFeed,
+                ApplicationUser02 = (from a in db.Users
+                                   where a.UserName == identa
+                                   select a).First()
+                
+            };
+
+            return View(viewModel);
+
+            //return View(chatFeed);
         }
 
         // GET: ChatFeeds/Create
@@ -46,7 +62,7 @@ namespace Chatter.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TweetID,TweetContent,TweetDate")] ChatFeed chatFeed)
+        public ActionResult Create([Bind(Include = "TweetID,TweetContent,TweetDate,ApplicationUser02_Id")] ChatFeed chatFeed)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +94,7 @@ namespace Chatter.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TweetID,TweetContent,TweetDate")] ChatFeed chatFeed)
+        public ActionResult Edit([Bind(Include = "TweetID,TweetContent,TweetDate,UserName")] ChatFeed chatFeed)
         {
             if (ModelState.IsValid)
             {

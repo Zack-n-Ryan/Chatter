@@ -1,8 +1,13 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color:darkolivegreen ;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+.jumbotron{
 
+    background-image:repeating-radial-gradient(orange,red);
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

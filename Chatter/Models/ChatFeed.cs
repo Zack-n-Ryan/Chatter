@@ -13,6 +13,6 @@ namespace Chatter.Models
         public int TweetID { get; set; }
         public string TweetContent { get; set; }
         public DateTime TweetDate { get; set; }
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser ApplicationUser02 { get; set; }
     }
 }

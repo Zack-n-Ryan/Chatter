@@ -6,7 +6,7 @@
 
 }
 
-<h2>Index</h2>
+<h2>Chat Feed</h2>
  
 
 
@@ -23,7 +23,7 @@
             @Html.DisplayNameFor(model => model.TweetDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+            @Html.DisplayNameFor(model => model.ApplicationUser02.Email)
 
         </th>
         <th></th>
@@ -38,14 +38,31 @@
             @Html.DisplayFor(modelItem => item.TweetDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ApplicationUser.ChatFeeds)
+            @Html.DisplayFor(modelItem => item.ApplicationUser02.Email)
         </td> 
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TweetID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TweetID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TweetID })
+            @* Choices for people if they are logged in/diff if they are not *@
+           @if (User.Identity.Name != "")
+            {
+
+            @Html.ActionLink("Edit", "Edit", new { id = item.TweetID }) 
+
+
+            }|
+            @Html.ActionLink("Details", "Details", new { id = item.TweetID })|
+           
+            @if (User.Identity.Name != "")
+            {
+
+            @Html.ActionLink("Delete", "Delete", new { id = item.TweetID })
+
+
+
+            }
+           
         </td>
     </tr>
 }
 
 </table>
+
